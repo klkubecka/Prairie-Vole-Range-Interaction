@@ -1,0 +1,120 @@
+---
+title: "Prairie-Vole-Range-Interaction"
+format: html
+---
+
+```{r}
+library(tidyverse)
+library(sf)
+```
+
+
+
+```{r}
+HD_Range <- "data/HR_Notreduced_H.csv"
+
+HD_Range <- read_csv(HD_Range, col_names = TRUE)
+
+HD_Range <- HD_Range |>
+  rename(tag_id = "HEX Tag ID",
+         x = "X Coor",
+         y = "Y Coor")
+
+
+LD_Range <- "data/HR_Notreduced_L.csv"
+
+LD_Range <- read_csv(LD_Range, col_names = TRUE)
+
+LD_Range <- LD_Range |>
+  rename(tag_id = "HEX Tag ID",
+         x = "X Coor",
+         y = "Y Coor")
+```
+
+
+
+```{r}
+HD_Range$short_tag <- substr(HD_Range$tag_id, nchar(HD_Range$tag_id) -1, nchar(HD_Range$tag_id))
+
+pointsH <- st_as_sf(HD_Range, coords = c("x", "y"), crs = NA)
+
+Ranges_H <- HD_Range |> 
+  distinct(tag_id, short_tag, x, y, ) |>
+  group_by(tag_id, short_tag) |>
+  filter(n() >=3) |>
+  summarise(
+    geometry = st_combine(st_as_sf(
+      tibble(x, y), coords = c("x", "y"), crs = NA)$geometry) |>
+        st_convex_hull(), .groups= "drop"
+    ) |>
+      st_as_sf()
+  
+
+Ranges_H$area_m2 <- as.numeric(st_area(Ranges_H))
+
+
+LD_Range$short_tag <- substr(LD_Range$tag_id, nchar(LD_Range$tag_id) -1, nchar(LD_Range$tag_id))
+
+pointsL <- st_as_sf(LD_Range, coords = c("x", "y"), crs = NA)
+
+Ranges_L <- LD_Range |> 
+  distinct(tag_id, short_tag, x, y, ) |>
+  group_by(tag_id, short_tag) |>
+  filter(n() >=3) |>
+  summarise(
+    geometry = st_combine(st_as_sf(
+      tibble(x, y), coords = c("x", "y"), crs = NA)$geometry) |>
+        st_convex_hull(), .groups= "drop"
+    ) |>
+      st_as_sf()
+  
+
+Ranges_L$area_m2 <- as.numeric(st_area(Ranges_L))
+
+```
+
+
+
+```{r}
+pointsH$short_tag <- HD_Range$short_tag[match(pointsH$short_tag, HD_Range$short_tag)]
+
+
+H_plot_all <- ggplot() +
+  geom_sf(data = Ranges_H, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
+  geom_sf(data = pointsH, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none")
+H_plot_all
+
+###
+
+pointsL$short_tag <- LD_Range$short_tag[match(pointsL$short_tag, LD_Range$short_tag)]
+
+L_plot_all <- ggplot() +
+  geom_sf(data = Ranges_L, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
+  geom_sf(data = pointsL, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none") 
+
+L_plot_all
+```
+
+
+
+```{r}
+H_plot_facet <- ggplot() +
+  geom_sf(data = Ranges_H, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
+  geom_sf(data = pointsH, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none") +
+  facet_wrap(~short_tag, ncol = 7)
+
+H_plot_facet
+
+###
+
+L_plot_facet <- ggplot() +
+  geom_sf(data = Ranges_L, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
+  geom_sf(data = pointsL, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none") +
+  facet_wrap(~short_tag, ncol = 7)
+
+L_plot_facet
+```

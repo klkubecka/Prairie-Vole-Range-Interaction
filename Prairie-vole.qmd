@@ -3,6 +3,36 @@ title: "Prairie-Vole-Range-Interaction"
 format: html
 ---
 
+# 1. Introduction
+
+## Backround: Social networks and prairie voles
+
+The prairie vole (*Microtus ochrogaster*) is  **socially monogamous,** a reproductive strategy in which a bonded pair share a home range, engage in biparental care of their pups, and preferentially interact with each other compared to other conspecifics. Due to their stable pair bonds and overlapping home ranges, they are an ideal species to study social networks. However, prairie voles are fossorial (burrowing & residing primarily underground). Traditional field methods, such as live trapping & VHF radio, capture snapshots of vole movement, and as such are *an incomplete picture of vole sociality.* A **social/biological network analysis** is an ideal tool to discern vole individual associations, as well as the strength of those associations. 
+
+## Social network analysis (SNA)
+
+Social network analysis builds upon graph theory and is used to discern how individual connections can form group associations, or patterns. 
+
+There are 3 major components to SNA
+**Nodes:** individual elements of study (in our case, individual voles identified when their RFID tag is detected)
+**Edges:** relationships between individuals ("social interactions," or voles passing through the same detector)
+**Weight:** strength of edges, calculated via Simple Ratio Index (RFID hit frequencies).
+Collectively, we can use this data to discern
+**degree:** the number of connections a vole has
+**clustering:** the emergence of vole "friend networks,"
+**centrality:** a vole's importance to an overall network, and 
+**communities:** social subgroups.
+
+SNA enables researchers to go beyond the level of analysis via live trapping, nest co-location, and VHF radio telemetry; these 3 methods can only address a brief moment in time of a vole's location. These methods are also limited by their ability to discern proximity, correlating vole movements to extrapolate pair bonded voles. Howeve, these two voles could also merely have overlapping territories. 
+ 
+
+# 2. Description of dataset 
+
+## Data from (Sabo, Solomon, & Dantzer, 2018) was available via Figshare *(link)*
+
+## Step 1. Load packages
+
+
 ```{r}
 library(tidyverse)
 library(sf)

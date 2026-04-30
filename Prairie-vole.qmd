@@ -11,40 +11,49 @@ library(sf)
 
 
 ```{r}
-HD_Range <- "data/HR_Notreduced_H.csv"
+HD_Range <- "data/HD_GPS.csv"
 
-HD_Range <- read_csv(HD_Range, col_names = TRUE)
+HD_Range <- read.csv(HD_Range, check.names = FALSE,
+                     stringsAsFactors = FALSE) |>
+  rename(vole_id = "Vole ID",
+         northing = Northing,
+         easting = Easting) |>
+  mutate(vole_id = trimws(vole_id))
 
-HD_Range <- HD_Range |>
-  rename(tag_id = "HEX Tag ID",
-         x = "X Coor",
-         y = "Y Coor")
+UTM_EPSG <- 32616
 
+pointsH <- st_as_sf(HD_Range, coords = c("easting", "northing"), crs = UTM_EPSG)
 
-LD_Range <- "data/HR_Notreduced_L.csv"
+###
 
-LD_Range <- read_csv(LD_Range, col_names = TRUE)
+LD_Range <- "data/LD_GPS.csv"
 
-LD_Range <- LD_Range |>
-  rename(tag_id = "HEX Tag ID",
-         x = "X Coor",
-         y = "Y Coor")
+LD_Range <- read.csv(LD_Range, check.names = FALSE,
+                     stringsAsFactors = FALSE) |>
+  rename(vole_id = "Vole ID",
+         northing = Northing,
+         easting = Easting) |>
+  mutate(vole_id = trimws(vole_id))
+
+UTM_EPSG <- 32616
+
+pointsL <- st_as_sf(LD_Range, coords = c("easting", "northing"), crs = UTM_EPSG)
+
 ```
 
 
 
 ```{r}
-HD_Range$short_tag <- substr(HD_Range$tag_id, nchar(HD_Range$tag_id) -1, nchar(HD_Range$tag_id))
+HD_Range$short_tag <- substr(HD_Range$vole_id, nchar(HD_Range$vole_id) -1, nchar(HD_Range$vole_id))
 
-pointsH <- st_as_sf(HD_Range, coords = c("x", "y"), crs = NA)
 
 Ranges_H <- HD_Range |> 
-  distinct(tag_id, short_tag, x, y, ) |>
-  group_by(tag_id, short_tag) |>
+  distinct(vole_id, short_tag, easting, northing, ) |>
+  group_by(vole_id, short_tag) |>
   filter(n() >=3) |>
   summarise(
     geometry = st_combine(st_as_sf(
-      tibble(x, y), coords = c("x", "y"), crs = NA)$geometry) |>
+      tibble(easting, northing), coords = c("easting", "northing"), crs = UTM_EPSG)$geometry) |>
         st_convex_hull(), .groups= "drop"
     ) |>
       st_as_sf()
@@ -52,18 +61,18 @@ Ranges_H <- HD_Range |>
 
 Ranges_H$area_m2 <- as.numeric(st_area(Ranges_H))
 
+###
 
-LD_Range$short_tag <- substr(LD_Range$tag_id, nchar(LD_Range$tag_id) -1, nchar(LD_Range$tag_id))
+LD_Range$short_tag <- substr(LD_Range$vole_id, nchar(LD_Range$vole_id) -1, nchar(LD_Range$vole_id))
 
-pointsL <- st_as_sf(LD_Range, coords = c("x", "y"), crs = NA)
 
 Ranges_L <- LD_Range |> 
-  distinct(tag_id, short_tag, x, y, ) |>
-  group_by(tag_id, short_tag) |>
+  distinct(vole_id, short_tag, easting, northing, ) |>
+  group_by(vole_id, short_tag) |>
   filter(n() >=3) |>
   summarise(
     geometry = st_combine(st_as_sf(
-      tibble(x, y), coords = c("x", "y"), crs = NA)$geometry) |>
+      tibble(easting, northing), coords = c("easting", "northing"), crs = UTM_EPSG)$geometry) |>
         st_convex_hull(), .groups= "drop"
     ) |>
       st_as_sf()
@@ -76,23 +85,23 @@ Ranges_L$area_m2 <- as.numeric(st_area(Ranges_L))
 
 
 ```{r}
-pointsH$short_tag <- HD_Range$short_tag[match(pointsH$short_tag, HD_Range$short_tag)]
-
+pointsH$short_tag <- HD_Range$short_tag[match(pointsH$vole_id, HD_Range$vole_id)]
 
 H_plot_all <- ggplot() +
   geom_sf(data = Ranges_H, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
-  geom_sf(data = pointsH, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
-  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none")
+  geom_sf(data = pointsH, aes(color = short_tag), size = 0.8, alpha = 0.6, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 2, override.aes = list(alpha=0.6)), color="none") 
+
 H_plot_all
 
 ###
 
-pointsL$short_tag <- LD_Range$short_tag[match(pointsL$short_tag, LD_Range$short_tag)]
+pointsL$short_tag <- LD_Range$short_tag[match(pointsL$vole_id, LD_Range$vole_id)]
 
 L_plot_all <- ggplot() +
   geom_sf(data = Ranges_L, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
-  geom_sf(data = pointsL, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
-  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none") 
+  geom_sf(data = pointsL, aes(color = short_tag), size = 0.8, alpha = 0.6, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 2, override.aes = list(alpha=0.6)), color="none") 
 
 L_plot_all
 ```
@@ -101,20 +110,22 @@ L_plot_all
 
 ```{r}
 H_plot_facet <- ggplot() +
-  geom_sf(data = Ranges_H, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
-  geom_sf(data = pointsH, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
-  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none") +
-  facet_wrap(~short_tag, ncol = 7)
+  geom_sf(data = Ranges_H, aes(fill = short_tag, color = short_tag), alpha = 0.35, linewidth = .4) +
+  geom_sf(data = pointsH, aes(color = short_tag), size = 0.6, alpha = 0.8, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 2, override.aes = list(alpha=0.6)), color="none") +
+  facet_wrap(~short_tag, ncol = 4) +
+  theme_minimal(base_size = 8)
 
 H_plot_facet
 
 ###
 
 L_plot_facet <- ggplot() +
-  geom_sf(data = Ranges_L, aes(fill = short_tag, color = short_tag), alpha = 0.18, linewidth = .4) +
-  geom_sf(data = pointsL, aes(color = short_tag), size = 0.6, alpha = 0.5, show.legend = FALSE) +
-  guides(fill = guide_legend(ncol = 3, override.aes = list(alpha=0.6)), color="none") +
-  facet_wrap(~short_tag, ncol = 7)
+  geom_sf(data = Ranges_L, aes(fill = short_tag, color = short_tag), alpha = 0.35, linewidth = .4) +
+  geom_sf(data = pointsL, aes(color = short_tag), size = 0.6, alpha = 0.8, show.legend = FALSE) +
+  guides(fill = guide_legend(ncol = 2, override.aes = list(alpha=0.6)), color="none") +
+  facet_wrap(~short_tag, ncol = 4) +
+  theme_minimal(base_size = 8)
 
 L_plot_facet
 ```

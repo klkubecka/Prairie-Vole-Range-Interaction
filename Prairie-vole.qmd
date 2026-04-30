@@ -178,7 +178,7 @@ rfid <- read.csv(rfid, check.names = FALSE, stringsAsFactors = FALSE) |>
   rename(date = "Scan Date", time = "Scan Time", antenna = "Antenna ID", array = Array, tag = "HEX Tag ID") |>
   mutate(
     tag = trimws(tag),
-    tag = sub("^3DD||.003", "", tag),
+    tag = sub("^3DD\\.003", "", tag),
     dt = mdy_hms(paste(date, time)),
     enclosure = recode(array, "HO"="HD", "HW"="HD", "LO"="LD", "LW"="LD")
   ) |>
@@ -190,7 +190,7 @@ zuck <- bind_rows(
   pppt |> distinct(id = Female, Enclosure) |> mutate(sex = "F"),
   pppt |> distinct(id = Male, Enclosure) |> mutate(sex = "M")
 ) |>
-  distinct(id, sex, enclosire = Enclosure)
+  distinct(id, sex, enclosure = Enclosure)
 
 cat("Sex/enclosure assignments:", nrow(zuck), "individuals\n")
 
@@ -203,27 +203,100 @@ cat("Sex/enclosure assignments:", nrow(zuck), "individuals\n")
 rfid_build <- function(rfid_df, ids, window_s = 300) {
   sub <- rfid_df |>
     filter(tag %in% ids) |>
-    mutate(bin = as.integer(as.numeric(dt) %?% window_s),
-           event = paste(antenna, bin, sep ="|"))
-  
-  gbi <- sub |> 
-    distinct(event, tag) |>
-    mutate(present = 1L) |>
-    pivot_wider(names_from = tag, values_from = present, values_fill = 0L)
-  
-  m <- as.matrix(gbi[, -1])
-  rownames(m) <- gbi$event
-  if(length(missing) >0 {
-    m <- cbind(m, matrix(0L, nrow = nrow(m), ncol = length(missing),
-                         dimnames = list(NULL, missing)))
+    mutate(bin   = as.integer(as.numeric(dt) %/% window_s),
+           event = paste(antenna, bin, sep = "|")) |>
+    distinct(event, tag)
+ 
+  N <- length(ids)
+ 
+  if (nrow(sub) == 0) {
+    g <- make_empty_graph(n = N, directed = FALSE)
+    V(g)$name <- ids
+    return(g)
   }
   
-  m <- m[, ids, drop = FALSE]
+  events <- unique(sub$event)
+  M <- matrix(0L, nrow = length(events), ncol = N,
+              dimnames = list(events, ids))
+  M[cbind(match(sub$event, events), match(sub$tag, ids))] <- 1L
   
-  sri <- get_network(m, data_format = "GBI", association_index = "SRI")
+  seen <- colSums(M)
+  co <- crossprod(M)
+  diag(co) <- 0
+  
+  denom <- outer(seen, seen, "+") - co
+  sri   <- ifelse(denom > 0, co / denom, 0)
+  diag(sri) <- 0
+  dimnames(sri) <- list(ids, ids)
+ 
   graph_from_adjacency_matrix(sri, mode = "undirected",
                               weighted = TRUE, diag = FALSE)
-  
 }
+
+###
+
+trap_build <- function(pppt_df, ids) {
+  edge_df <- pppt_df |>
+    filter(Female %in% ids, Male %in% ids,
+           !is.na(Trapping), Trapping > 0) |>
+    transmute(from = Female, to = Male, weight = Trapping)
+  
+  vertex_df <- data.frame(name = ids)
+ 
+  if (nrow(edge_df) == 0) {
+    g <- make_empty_graph(n = length(ids), directed = FALSE)
+    V(g)$name <- ids
+    return(g)
+  }
+ 
+  graph_from_data_frame(edge_df, directed = FALSE, vertices = vertex_df)
+}
+```
+
+
+
+```{r}
+plot_panel <- function(g, sex_vec, title) {
+  V(g)$color <- ifelse(sex_vec[V(g)$name] == "F", "red", "blue")
+  plot(g,
+       layout       = layout_in_circle(g),
+       vertex.size  = 12,
+       vertex.label = NA,
+       vertex.frame.color = "black",
+       edge.color   = "black",
+       edge.width   = 0.7,
+       main         = title)
+}
+
+
+sex_vec <- setNames(zuck$sex, zuck$id)
+ 
+png("rfid_vs_trapping_networks.png", width = 2400, height = 2200, res = 220)
+par(mfrow = c(2, 2), mar = c(1, 1, 3, 1))
+
+row_order <- c("LD", "HD")
+
+enc_labels <- c(LD = "Enclosure 1 (HD)", HD = "Enclosure 2 (LD)")
+
+panel_letters <- list(c("A","B"), c("C","D"))
+ 
+for (row_idx in seq_along(row_order)) {
+  enc_id <- row_order[row_idx]
+  ids_e  <- zuck |> filter(enclosure == enc_id) |> pull(id) |> sort()
+ 
+  g_rfid <- rfid_build(rfid, ids_e, window_s = 300)
+  g_trap <- trap_build(pppt |> filter(Enclosure == enc_id), ids_e)
+ 
+  enc_label <- enc_labels[[enc_id]]
+  letters_row <- panel_letters[[row_idx]]
+ 
+  plot_panel(g_rfid, sex_vec,
+             paste0(letters_row[1], "  RFID Data — ", enc_label))
+  plot_panel(g_trap, sex_vec,
+             paste0(letters_row[2], "  Trapping Data — ", enc_label))
+}
+ 
+dev.off()
+cat("Saved rfid_vs_trapping_networks.png\n")
 
 ```

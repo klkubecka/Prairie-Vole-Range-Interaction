@@ -6,6 +6,9 @@ format: html
 ```{r}
 library(tidyverse)
 library(sf)
+library(lubridate)
+library(igraph)
+library(asnipe)
 ```
 
 
@@ -128,4 +131,69 @@ L_plot_facet <- ggplot() +
   theme_minimal(base_size = 8)
 
 L_plot_facet
+```
+
+
+```{r}
+
+pppt <- "data/PPPT_Interactions.csv"
+
+pppt <- read.csv(pppt, stringsAsFactors = FALSE) |>
+  mutate(across(where(is.character), trimws))
+
+
+rfid <- "data/Full_RFID_Data_2017.csv"
+
+rfid <- read.csv(rfid, check.names = FALSE, stringsAsFactors = FALSE) |>
+  rename(date = "Scan Date", time = "Scan Time", antenna = "Antenna ID", array = Array, tag = "HEX Tag ID") |>
+  mutate(
+    tag = trimws(tag),
+    tag = sub("^3DD||.003", "", tag),
+    dt = mdy_hms(paste(date, time)),
+    enclosure = recode(array, "HO"="HD", "HW"="HD", "LO"="LD", "LW"="LD")
+  ) |>
+  filter(!is.na(dt))
+
+###
+
+zuck <- bind_rows(
+  pppt |> distinct(id = Female, Enclosure) |> mutate(sex = "F"),
+  pppt |> distinct(id = Male, Enclosure) |> mutate(sex = "M")
+) |>
+  distinct(id, sex, enclosire = Enclosure)
+
+cat("Sex/enclosure assignments:", nrow(zuck), "individuals\n")
+
+```
+
+
+
+```{r}
+
+rfid_build <- function(rfid_df, ids, window_s = 300) {
+  sub <- rfid_df |>
+    filter(tag %in% ids) |>
+    mutate(bin = as.integer(as.numeric(dt) %?% window_s),
+           event = paste(antenna, bin, sep ="|"))
+  
+  gbi <- sub |> 
+    distinct(event, tag) |>
+    mutate(present = 1L) |>
+    pivot_wider(names_from = tag, values_from = present, values_fill = 0L)
+  
+  m <- as.matrix(gbi[, -1])
+  rownames(m) <- gbi$event
+  if(length(missing) >0 {
+    m <- cbind(m, matrix(0L, nrow = nrow(m), ncol = length(missing),
+                         dimnames = list(NULL, missing)))
+  }
+  
+  m <- m[, ids, drop = FALSE]
+  
+  sri <- get_network(m, data_format = "GBI", association_index = "SRI")
+  graph_from_adjacency_matrix(sri, mode = "undirected",
+                              weighted = TRUE, diag = FALSE)
+  
+}
+
 ```

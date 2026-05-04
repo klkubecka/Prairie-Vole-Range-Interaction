@@ -80,7 +80,7 @@ pointsL <- st_as_sf(LD_Range, coords = c("easting", "northing"), crs = UTM_EPSG)
 
 ## Step 3: Generating Vole Home Ranges
 
-
+Generating a  **minimum convex polygon** (convex hull) around all GPS points recorded for each vole createds an estimated home range. We need a minimum of 3 points per vole to draw a geometric polygon. Lastly, we can calculate the total area in square meters for each of these ranges (for both HD and LD enclosures).
 
 ```{r}
 HD_Range$short_tag <- substr(HD_Range$vole_id, nchar(HD_Range$vole_id) -1, nchar(HD_Range$vole_id)) # creating a short tag id column from the vole_id column with the nchar functions working to choose the last two characters of the long vole_id names
@@ -123,7 +123,9 @@ Ranges_L$area_m2 <- as.numeric(st_area(Ranges_L))
 
 ```
 
+## Step 4. Visualizing Vole Home Range Space
 
+Old reliable `ggplot` and `geom_sf` are used to map out the ranges of each individual vole. The first visualization is a comprehensive overlay of all voles in the HD and LD enclosures.
 
 ```{r}
 
@@ -149,9 +151,12 @@ L_plot_all <- ggplot() +
 L_plot_all
 ```
 
+## Faceted Home Ranges
 
+Faceting the maps via vole tag ID enables us to parse out the data for each individual vole's range.
 
 ```{r}
+# High Density Faceted Range 
 H_plot_facet <- ggplot() +
   geom_sf(data = Ranges_H, aes(fill = short_tag, color = short_tag), alpha = 0.35, linewidth = .4) +
   geom_sf(data = pointsH, aes(color = short_tag), size = 0.6, alpha = 0.8, show.legend = FALSE) +
@@ -176,15 +181,18 @@ L_plot_facet <- ggplot() +
 L_plot_facet
 ```
 
+## Step 5. Cleaning and Preparing the Trapping and RFID Data
+
+We will be focusing on 2 interaction data sets to hone in on temporal aspects of spatial associations. The `PPPT_Interactions.csv` data set contains live trapping records. The `Full_RFID_Data_2017.csv` data set contains the high-resolution sensor detections of the vole collars. Clean the strings, standardize tag formats, and generate a metadata table for individual voles with ID, sex, and enclosure. 
 
 ```{r}
-
+# Live trapping data 
 pppt <- "data/PPPT_Interactions.csv" # Storing data in empty vector.
 
 pppt <- read.csv(pppt, stringsAsFactors = FALSE) |>
   mutate(across(where(is.character), trimws)) # Removing the leading and trailing white space from every text column to clean data.
 
-
+# RFID sensor data 
 rfid <- "data/Full_RFID_Data_2017.csv"
 
 rfid <- read.csv(rfid, check.names = FALSE, stringsAsFactors = FALSE) |>
@@ -209,7 +217,11 @@ cat("Sex/enclosure assignments:", nrow(zuck), "individuals\n") # Printing the nu
 
 ```
 
+## Step 6. Building the Network Association Graphs
 
+For the RFID dataset, we define an interaction as the detection of two animals by the same antenna within a 5 minute (300 second) bin. With relationship defined, we can then generate a Simple Ratio Index (SRI) matrix. 
+
+For the trapping data, the weight of a male and female vole's "edge" is defined by the number of co-trappings. 
 
 ```{r}
 # building a custom function that builds a social network. defining the function name and the three inputs: rfid_df = full RFID data frame, ids = which animal detections to include, window_s = Time-bin width in seconds, set at 5 minutes to scan which two animals were scanned at the same antenna within a 5 minute window. Counting this as associating or pairing.
@@ -272,6 +284,11 @@ trap_build <- function(pppt_df, ids) {
 
 ```
 
+## Step 7. Comparing the Interaction Networks
+
+Lastly, we generate networks for both detection methods and plot them side-by-side to see differences in perceived sociality. 
+
+Nodes are colored by sex (Red = Female, Blue = Male).
 
 
 ```{r}
@@ -320,3 +337,6 @@ dev.off() # saves graphic device.
 cat("Saved rfid_vs_trapping_networks.png\n") # Lets you know the image saved.
 
 ```
+## Conclusion
+
+The combined spatial overlaps and temporal networks show a more complex and dimensional picture of prairie vole social interaction than either RFID tracking or live trapping alone. When combining these tools, we are able to see web of interactions and clustered community metrics largely overlooked by the single moment "snapshot" of commonly used cage trapping.

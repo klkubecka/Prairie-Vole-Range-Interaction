@@ -339,4 +339,9 @@ cat("Saved rfid_vs_trapping_networks.png\n") # Lets you know the image saved.
 ```
 ## Conclusion
 
-The combined spatial overlaps and temporal networks show a more complex and dimensional picture of prairie vole social interaction than either RFID tracking or live trapping alone. When combining these tools, we are able to see web of interactions and clustered community metrics largely overlooked by the single moment "snapshot" of commonly used cage trapping.
+Package summary: Our package combines RFID and live trapping data to generate a granular analysis of vole social networks. 
+`Function 1` Generates social work matrices from RFID data of both high density and low density plots. 
+`Function 2` Similarly generates social network matrices but from live trap/PPT data for HD and LD conditions.
+`Function 3` Combines these two functions to create a social interaction plot of individual  male and female voles. 
+
+Data summary & research value:The combined spatial overlaps and temporal networks show a more complex and dimensional picture of prairie vole social interaction than either RFID tracking or live trapping alone. When combining these tools, we are able to see web of interactions and clustered community metrics largely overlooked by the single moment "snapshot" of commonly used live trapping. This package can go beyond the vole realm and be used to generate social networks for eusocial species such as naked mole rats, or species with long-term friendships,  such as the common vampire bat.

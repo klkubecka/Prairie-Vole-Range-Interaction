@@ -7,7 +7,8 @@ format: html
 
 ## Backround: Social networks and prairie voles
 
-The prairie vole (*Microtus ochrogaster*) is  **socially monogamous,** a reproductive strategy in which a bonded pair share a home range, engage in biparental care of their pups, and preferentially interact with each other compared to other conspecifics. Due to their stable pair bonds and overlapping home ranges, they are an ideal species to study social networks. However, prairie voles are fossorial (burrowing & residing primarily underground). Traditional field methods, such as live trapping & VHF radio, capture snapshots of vole movement, and as such are *an incomplete picture of vole sociality.* A **social/biological network analysis** is an ideal tool to discern vole individual associations, as well as the strength of those associations. 
+The prairie vole (*Microtus ochrogaster*) is  **socially monogamous,** a reproductive strategy in which a bonded pair share a home range, engage in biparental care of their pups, and preferentially interact with each other compared to other conspecifics. Due to their stable pair bonds and overlapping home ranges, they are an ideal species to study social networks. 
+However, prairie voles are fossorial (burrowing & residing primarily underground). Traditional field methods, such as live trapping & VHF radio, capture snapshots of vole movement, and as such are *an incomplete picture of vole sociality.* A **social/biological network analysis** is an ideal tool to discern vole individual associations, as well as the strength of those associations. 
 
 ## Social network analysis (SNA)
 
@@ -23,24 +24,26 @@ Collectively, we can use this data to discern
 **centrality:** a vole's importance to an overall network, and 
 **communities:** social subgroups.
 
-SNA enables researchers to go beyond the level of analysis via live trapping, nest co-location, and VHF radio telemetry; these 3 methods can only address a brief moment in time of a vole's location. These methods are also limited by their ability to discern proximity, correlating vole movements to extrapolate pair bonded voles. However, these two voles could also merely have overlapping territories. 
- 
+SNA enables researchers to go beyond the level of analysis via live trapping, nest co-location, and VHF radio telemetry; these 3 methods can only address a brief moment in time of a vole's location. These methods are also limited by their ability to discern proximity, correlating vole movements to extrapolate pair bonded voles. However, these two voles could also merely have overlapping territories.
 
 # 2. Description of dataset 
 
-## Data from (Sabo, Solomon, & Dantzer, 2018) was available via Figshare *(link)*
+Data from (Sabo, Solomon, & Dantzer, 2018) was available via [Figshare](https://figshare.com/projects/Prairie_vole_social_network_data_for_Frontiers_in_Ecology_and_Evolution/56114). In this vignette, we will analyze High Density (HD) and Low Density (LD) GPS tracking data alongside RFID and Trapping association data.
 
 ## Step 1. Load packages
 
 
 ```{r}
 library(tidyverse)
-library(sf)
-library(lubridate)
-library(igraph)
-library(asnipe)
+library(sf) # for spatial analysis
+library(lubridate) 
+library(igraph) # for network analysis
+library(asnipe) # also for network analysis
 ```
 
+## Step 2: Loading and Formatting Spatial Data
+
+Next, load GPS spatial data for the High Density (HD) and Low Density (LD) enclosures. Then, we will make the following formatting adjustments: cleaning the column names, trimming white-space from the vole IDs, and converting coordinates into spatial objects using the `sf` package. EPSG 32616 corresponds to the UTM coordinate reference system for the study location.
 
 
 ```{r}
@@ -74,6 +77,8 @@ UTM_EPSG <- 32616
 pointsL <- st_as_sf(LD_Range, coords = c("easting", "northing"), crs = UTM_EPSG)
 
 ```
+
+## Step 3: Generating Vole Home Ranges
 
 
 

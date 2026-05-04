@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -61,14 +61,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="Prairie-vole_files/libs/clipboard/clipboard.min.js"></script>
 <script src="Prairie-vole_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="Prairie-vole_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Prairie-vole_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="Prairie-vole_files/libs/quarto-html/popper.min.js"></script>
 <script src="Prairie-vole_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="Prairie-vole_files/libs/quarto-html/anchor.min.js"></script>
 <link href="Prairie-vole_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Prairie-vole_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="Prairie-vole_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="Prairie-vole_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="Prairie-vole_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Prairie-vole_files/libs/bootstrap/bootstrap-bb462d781dde1847d9e3ccf7736099dd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="Prairie-vole_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -117,58 +118,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="step-1.-load-packages" class="level2">
 <h2 class="anchored" data-anchor-id="step-1.-load-packages">Step 1. Load packages</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyverse' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tibble' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'tidyr' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'purrr' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'dplyr' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'stringr' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'forcats' was built under R version 4.5.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.5.3</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.1     ✔ readr     2.2.0
+✔ dplyr     1.2.0     ✔ readr     2.1.6
 ✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.3     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.2     
+✔ ggplot2   4.0.1     ✔ tibble    3.3.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.2
+✔ purrr     1.2.1     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># for spatial analysis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf) <span class="co"># for spatial analysis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'sf' was built under R version 4.5.3</code></pre>
+<pre><code>Linking to GEOS 3.13.0, GDAL 3.8.5, PROJ 9.5.1; sf_use_s2() is TRUE</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.14.1, GDAL 3.12.1, PROJ 9.7.1; sf_use_s2() is TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph) <span class="co"># for network analysis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate) </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(igraph) <span class="co"># for network analysis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'igraph'
@@ -201,101 +169,98 @@ The following object is masked from 'package:base':
 
     union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(asnipe) <span class="co"># also for network analysis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'asnipe' was built under R version 4.5.3</code></pre>
-</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(asnipe) <span class="co"># also for network analysis</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-2-loading-and-formatting-spatial-data" class="level2">
 <h2 class="anchored" data-anchor-id="step-2-loading-and-formatting-spatial-data">Step 2: Loading and Formatting Spatial Data</h2>
 <p>Next, load GPS spatial data for the High Density (HD) and Low Density (LD) enclosures. Then, we will make the following formatting adjustments: cleaning the column names, trimming white-space from the vole IDs, and converting coordinates into spatial objects using the <code>sf</code> package. EPSG 32616 corresponds to the UTM coordinate reference system for the study location.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>HD_Range <span class="ot">&lt;-</span> <span class="st">"data/HD_GPS.csv"</span> <span class="co"># loading file stored in data folder.</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>HD_Range <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(HD_Range, <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">vole_id =</span> <span class="st">"Vole ID"</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">northing =</span> Northing,</span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">easting =</span> Easting) <span class="sc">|&gt;</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vole_id =</span> <span class="fu">trimws</span>(vole_id)) <span class="co"># loading data as csv and then piping it into rename to change variable names for easier coding.</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>UTM_EPSG <span class="ot">&lt;-</span> <span class="dv">32616</span> <span class="co"># EPSG code used for region where study took place. Used for coordinate mapping in later steps.</span></span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>pointsH <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(HD_Range, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG) <span class="co">#converting the data set into a spatial object. st_as_sf converting into sf data model for spatial vectors. labeling which columns hold the coordinates with the crs being the coordinate reference system made in the previous line.</span></span>
-<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process loading in the low density as done above.</span></span>
-<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>LD_Range <span class="ot">&lt;-</span> <span class="st">"data/LD_GPS.csv"</span></span>
-<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>LD_Range <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(LD_Range, <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">vole_id =</span> <span class="st">"Vole ID"</span>,</span>
-<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">northing =</span> Northing,</span>
-<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">easting =</span> Easting) <span class="sc">|&gt;</span></span>
-<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vole_id =</span> <span class="fu">trimws</span>(vole_id))</span>
-<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>UTM_EPSG <span class="ot">&lt;-</span> <span class="dv">32616</span></span>
-<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>pointsL <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(LD_Range, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>HD_Range <span class="ot">&lt;-</span> <span class="st">"data/HD_GPS.csv"</span> <span class="co"># loading file stored in data folder.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>HD_Range <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(HD_Range, <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">vole_id =</span> <span class="st">"Vole ID"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">northing =</span> Northing,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>         <span class="at">easting =</span> Easting) <span class="sc">|&gt;</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vole_id =</span> <span class="fu">trimws</span>(vole_id)) <span class="co"># loading data as csv and then piping it into rename to change variable names for easier coding.</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>UTM_EPSG <span class="ot">&lt;-</span> <span class="dv">32616</span> <span class="co"># EPSG code used for region where study took place. Used for coordinate mapping in later steps.</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>pointsH <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(HD_Range, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG) <span class="co">#converting the data set into a spatial object. st_as_sf converting into sf data model for spatial vectors. labeling which columns hold the coordinates with the crs being the coordinate reference system made in the previous line.</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process loading in the low density as done above.</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>LD_Range <span class="ot">&lt;-</span> <span class="st">"data/LD_GPS.csv"</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>LD_Range <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(LD_Range, <span class="at">check.names =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">vole_id =</span> <span class="st">"Vole ID"</span>,</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">northing =</span> Northing,</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">easting =</span> Easting) <span class="sc">|&gt;</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vole_id =</span> <span class="fu">trimws</span>(vole_id))</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>UTM_EPSG <span class="ot">&lt;-</span> <span class="dv">32616</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>pointsL <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(LD_Range, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-3-generating-vole-home-ranges" class="level2">
 <h2 class="anchored" data-anchor-id="step-3-generating-vole-home-ranges">Step 3: Generating Vole Home Ranges</h2>
 <p>Generating a <strong>minimum convex polygon</strong> (convex hull) around all GPS points recorded for each vole createds an estimated home range. We need a minimum of 3 points per vole to draw a geometric polygon. Lastly, we can calculate the total area in square meters for each of these ranges (for both HD and LD enclosures).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>HD_Range<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> <span class="fu">substr</span>(HD_Range<span class="sc">$</span>vole_id, <span class="fu">nchar</span>(HD_Range<span class="sc">$</span>vole_id) <span class="sc">-</span><span class="dv">1</span>, <span class="fu">nchar</span>(HD_Range<span class="sc">$</span>vole_id)) <span class="co"># creating a short tag id column from the vole_id column with the nchar functions working to choose the last two characters of the long vole_id names</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>Ranges_H <span class="ot">&lt;-</span> HD_Range <span class="sc">|&gt;</span> </span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(vole_id, short_tag, easting, northing, ) <span class="sc">|&gt;</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vole_id, short_tag) <span class="sc">|&gt;</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span><span class="dv">3</span>) <span class="sc">|&gt;</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> <span class="fu">st_combine</span>(<span class="fu">st_as_sf</span>(</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(easting, northing), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG)<span class="sc">$</span>geometry) <span class="sc">|&gt;</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_convex_hull</span>(), <span class="at">.groups=</span> <span class="st">"drop"</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_as_sf</span>() </span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Dropping duplicates from HD_Range and then grouping by the ID. The data is then piped into filter to only choose animals that have 3 recordings (polygons can only be made with minimum 3 vertices) and then creating a new column named geometry which holds all the spatial data for each unique short tag. The spatial data is held by creating a table with the easting and northing points for each unique ID and then converting it into sf object points. This is then combined so each unique point holds a single cell containing the entire multipoint geometry. Piping into st_convex_hull created the smallest polygon around each group of points. Finally since a tible was made the final pipe is to convert the tible back in sf data.</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>Ranges_H<span class="sc">$</span>area_m2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">st_area</span>(Ranges_H)) <span class="co"># Calculating the area of each home range polygon and storing it into a new column that measures the area.</span></span>
-<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process as for High Density data.</span></span>
-<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>LD_Range<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> <span class="fu">substr</span>(LD_Range<span class="sc">$</span>vole_id, <span class="fu">nchar</span>(LD_Range<span class="sc">$</span>vole_id) <span class="sc">-</span><span class="dv">1</span>, <span class="fu">nchar</span>(LD_Range<span class="sc">$</span>vole_id))</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>Ranges_L <span class="ot">&lt;-</span> LD_Range <span class="sc">|&gt;</span> </span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(vole_id, short_tag, easting, northing, ) <span class="sc">|&gt;</span></span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vole_id, short_tag) <span class="sc">|&gt;</span></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span><span class="dv">3</span>) <span class="sc">|&gt;</span></span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> <span class="fu">st_combine</span>(<span class="fu">st_as_sf</span>(</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(easting, northing), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG)<span class="sc">$</span>geometry) <span class="sc">|&gt;</span></span>
-<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_convex_hull</span>(), <span class="at">.groups=</span> <span class="st">"drop"</span></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_as_sf</span>()</span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>Ranges_L<span class="sc">$</span>area_m2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">st_area</span>(Ranges_L))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>HD_Range<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> <span class="fu">substr</span>(HD_Range<span class="sc">$</span>vole_id, <span class="fu">nchar</span>(HD_Range<span class="sc">$</span>vole_id) <span class="sc">-</span><span class="dv">1</span>, <span class="fu">nchar</span>(HD_Range<span class="sc">$</span>vole_id)) <span class="co"># creating a short tag id column from the vole_id column with the nchar functions working to choose the last two characters of the long vole_id names</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>Ranges_H <span class="ot">&lt;-</span> HD_Range <span class="sc">|&gt;</span> </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(vole_id, short_tag, easting, northing, ) <span class="sc">|&gt;</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vole_id, short_tag) <span class="sc">|&gt;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span><span class="dv">3</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> <span class="fu">st_combine</span>(<span class="fu">st_as_sf</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(easting, northing), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG)<span class="sc">$</span>geometry) <span class="sc">|&gt;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_convex_hull</span>(), <span class="at">.groups=</span> <span class="st">"drop"</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_as_sf</span>() </span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Dropping duplicates from HD_Range and then grouping by the ID. The data is then piped into filter to only choose animals that have 3 recordings (polygons can only be made with minimum 3 vertices) and then creating a new column named geometry which holds all the spatial data for each unique short tag. The spatial data is held by creating a table with the easting and northing points for each unique ID and then converting it into sf object points. This is then combined so each unique point holds a single cell containing the entire multipoint geometry. Piping into st_convex_hull created the smallest polygon around each group of points. Finally since a tible was made the final pipe is to convert the tible back in sf data.</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>Ranges_H<span class="sc">$</span>area_m2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">st_area</span>(Ranges_H)) <span class="co"># Calculating the area of each home range polygon and storing it into a new column that measures the area.</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process as for High Density data.</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>LD_Range<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> <span class="fu">substr</span>(LD_Range<span class="sc">$</span>vole_id, <span class="fu">nchar</span>(LD_Range<span class="sc">$</span>vole_id) <span class="sc">-</span><span class="dv">1</span>, <span class="fu">nchar</span>(LD_Range<span class="sc">$</span>vole_id))</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>Ranges_L <span class="ot">&lt;-</span> LD_Range <span class="sc">|&gt;</span> </span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(vole_id, short_tag, easting, northing, ) <span class="sc">|&gt;</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(vole_id, short_tag) <span class="sc">|&gt;</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span><span class="dv">3</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">geometry =</span> <span class="fu">st_combine</span>(<span class="fu">st_as_sf</span>(</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tibble</span>(easting, northing), <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"easting"</span>, <span class="st">"northing"</span>), <span class="at">crs =</span> UTM_EPSG)<span class="sc">$</span>geometry) <span class="sc">|&gt;</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>        <span class="fu">st_convex_hull</span>(), <span class="at">.groups=</span> <span class="st">"drop"</span></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">|&gt;</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>      <span class="fu">st_as_sf</span>()</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>Ranges_L<span class="sc">$</span>area_m2 <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">st_area</span>(Ranges_L))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-4.-visualizing-vole-home-range-space" class="level2">
 <h2 class="anchored" data-anchor-id="step-4.-visualizing-vole-home-range-space">Step 4. Visualizing Vole Home Range Space</h2>
 <p>Old reliable <code>ggplot</code> and <code>geom_sf</code> are used to map out the ranges of each individual vole. The first visualization is a comprehensive overlay of all voles in the HD and LD enclosures.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>pointsH<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> HD_Range<span class="sc">$</span>short_tag[<span class="fu">match</span>(pointsH<span class="sc">$</span>vole_id, HD_Range<span class="sc">$</span>vole_id)]  <span class="co"># copying the short_tag values from HD_Range and putting them into pointsH </span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>H_plot_all <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_H, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.18</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsH, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>)  <span class="co">#Utilizing an empty ggplot I then add geom_sf to render the sf data, it takes the geometry column and draws them onto the plot. setting each polygon to have a specific color and fill based on the short_tag to distinguish the individual ranges. alpha levels were changed to help with the transparency. </span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>H_plot_all <span class="co"># Looking at the range map</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>pointsH<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> HD_Range<span class="sc">$</span>short_tag[<span class="fu">match</span>(pointsH<span class="sc">$</span>vole_id, HD_Range<span class="sc">$</span>vole_id)]  <span class="co"># copying the short_tag values from HD_Range and putting them into pointsH </span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>H_plot_all <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_H, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.18</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsH, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>)  <span class="co">#Utilizing an empty ggplot I then add geom_sf to render the sf data, it takes the geometry column and draws them onto the plot. setting each polygon to have a specific color and fill based on the short_tag to distinguish the individual ranges. alpha levels were changed to help with the transparency. </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>H_plot_all <span class="co"># Looking at the range map</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -303,16 +268,16 @@ The following object is masked from 'package:base':
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process as with the High Density data</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>pointsL<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> LD_Range<span class="sc">$</span>short_tag[<span class="fu">match</span>(pointsL<span class="sc">$</span>vole_id, LD_Range<span class="sc">$</span>vole_id)]</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>L_plot_all <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_L, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.18</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsL, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>) </span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>L_plot_all</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process as with the High Density data</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>pointsL<span class="sc">$</span>short_tag <span class="ot">&lt;-</span> LD_Range<span class="sc">$</span>short_tag[<span class="fu">match</span>(pointsL<span class="sc">$</span>vole_id, LD_Range<span class="sc">$</span>vole_id)]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>L_plot_all <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_L, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.18</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsL, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>) </span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>L_plot_all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -326,17 +291,17 @@ The following object is masked from 'package:base':
 <h2 class="anchored" data-anchor-id="faceted-home-ranges">Faceted Home Ranges</h2>
 <p>Faceting the maps via vole tag ID enables us to parse out the data for each individual vole’s range.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># High Density Faceted Range </span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>H_plot_facet <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_H, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsH, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>short_tag, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">8</span>)</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Same plot process as the last chunk but this time adding a facet_wrap function to separate the ranges by the short tag.</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>H_plot_facet <span class="co"># Looking at the facet</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># High Density Faceted Range </span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>H_plot_facet <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_H, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsH, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>short_tag, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">8</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Same plot process as the last chunk but this time adding a facet_wrap function to separate the ranges by the short tag.</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>H_plot_facet <span class="co"># Looking at the facet</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -344,17 +309,17 @@ The following object is masked from 'package:base':
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process as with he High density data</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>L_plot_facet <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_L, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsL, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>short_tag, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">8</span>)</span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a>L_plot_facet</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Same process as with he High density data</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>L_plot_facet <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> Ranges_L, <span class="fu">aes</span>(<span class="at">fill =</span> short_tag, <span class="at">color =</span> short_tag), <span class="at">alpha =</span> <span class="fl">0.35</span>, <span class="at">linewidth =</span> .<span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> pointsL, <span class="fu">aes</span>(<span class="at">color =</span> short_tag), <span class="at">size =</span> <span class="fl">0.6</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">fill =</span> <span class="fu">guide_legend</span>(<span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">override.aes =</span> <span class="fu">list</span>(<span class="at">alpha=</span><span class="fl">0.6</span>)), <span class="at">color=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>short_tag, <span class="at">ncol =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">8</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>L_plot_facet</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -368,34 +333,34 @@ The following object is masked from 'package:base':
 <h2 class="anchored" data-anchor-id="step-5.-cleaning-and-preparing-the-trapping-and-rfid-data">Step 5. Cleaning and Preparing the Trapping and RFID Data</h2>
 <p>We will be focusing on 2 interaction data sets to hone in on temporal aspects of spatial associations. The <code>PPPT_Interactions.csv</code> data set contains live trapping records. The <code>Full_RFID_Data_2017.csv</code> data set contains the high-resolution sensor detections of the vole collars. Clean the strings, standardize tag formats, and generate a metadata table for individual voles with ID, sex, and enclosure.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Live trapping data </span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>pppt <span class="ot">&lt;-</span> <span class="st">"data/PPPT_Interactions.csv"</span> <span class="co"># Storing data in empty vector.</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>pppt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(pppt, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), trimws)) <span class="co"># Removing the leading and trailing white space from every text column to clean data.</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="co"># RFID sensor data </span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>rfid <span class="ot">&lt;-</span> <span class="st">"data/Full_RFID_Data_2017.csv"</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>rfid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(rfid, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date =</span> <span class="st">"Scan Date"</span>, <span class="at">time =</span> <span class="st">"Scan Time"</span>, <span class="at">antenna =</span> <span class="st">"Antenna ID"</span>, <span class="at">array =</span> Array, <span class="at">tag =</span> <span class="st">"HEX Tag ID"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">tag =</span> <span class="fu">trimws</span>(tag),</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">tag =</span> <span class="fu">sub</span>(<span class="st">"^3DD</span><span class="sc">\\</span><span class="st">.003"</span>, <span class="st">""</span>, tag),</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">dt =</span> <span class="fu">mdy_hms</span>(<span class="fu">paste</span>(date, time)),</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">enclosure =</span> <span class="fu">recode</span>(array, <span class="st">"HO"</span><span class="ot">=</span><span class="st">"HD"</span>, <span class="st">"HW"</span><span class="ot">=</span><span class="st">"HD"</span>, <span class="st">"LO"</span><span class="ot">=</span><span class="st">"LD"</span>, <span class="st">"LW"</span><span class="ot">=</span><span class="st">"LD"</span>)</span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dt)) <span class="co"># Same process as with pppt except this time I am changing some column names to be shorter and easier to code later. I then mutate to add a column that trims white space from the tag and then taking out the "^3DD\\.003" which would leave the last 2 digits of the vole_id shortening the name and making legends easier to look at.</span></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>zuck <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>  pppt <span class="sc">|&gt;</span> <span class="fu">distinct</span>(<span class="at">id =</span> Female, Enclosure) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="st">"F"</span>),</span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>  pppt <span class="sc">|&gt;</span> <span class="fu">distinct</span>(<span class="at">id =</span> Male, Enclosure) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="st">"M"</span>)</span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(id, sex, <span class="at">enclosure =</span> Enclosure) <span class="co"># building a meta data table organizing the data needed for social interactions figure</span></span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sex/enclosure assignments:"</span>, <span class="fu">nrow</span>(zuck), <span class="st">"individuals</span><span class="sc">\n</span><span class="st">"</span>) <span class="co"># Printing the number of paired individuals</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Live trapping data </span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>pppt <span class="ot">&lt;-</span> <span class="st">"data/PPPT_Interactions.csv"</span> <span class="co"># Storing data in empty vector.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>pppt <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(pppt, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.character), trimws)) <span class="co"># Removing the leading and trailing white space from every text column to clean data.</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># RFID sensor data </span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>rfid <span class="ot">&lt;-</span> <span class="st">"data/Full_RFID_Data_2017.csv"</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>rfid <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(rfid, <span class="at">check.names =</span> <span class="cn">FALSE</span>, <span class="at">stringsAsFactors =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">date =</span> <span class="st">"Scan Date"</span>, <span class="at">time =</span> <span class="st">"Scan Time"</span>, <span class="at">antenna =</span> <span class="st">"Antenna ID"</span>, <span class="at">array =</span> Array, <span class="at">tag =</span> <span class="st">"HEX Tag ID"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">tag =</span> <span class="fu">trimws</span>(tag),</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">tag =</span> <span class="fu">sub</span>(<span class="st">"^3DD</span><span class="sc">\\</span><span class="st">.003"</span>, <span class="st">""</span>, tag),</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">dt =</span> <span class="fu">mdy_hms</span>(<span class="fu">paste</span>(date, time)),</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">enclosure =</span> <span class="fu">recode</span>(array, <span class="st">"HO"</span><span class="ot">=</span><span class="st">"HD"</span>, <span class="st">"HW"</span><span class="ot">=</span><span class="st">"HD"</span>, <span class="st">"LO"</span><span class="ot">=</span><span class="st">"LD"</span>, <span class="st">"LW"</span><span class="ot">=</span><span class="st">"LD"</span>)</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(dt)) <span class="co"># Same process as with pppt except this time I am changing some column names to be shorter and easier to code later. I then mutate to add a column that trims white space from the tag and then taking out the "^3DD\\.003" which would leave the last 2 digits of the vole_id shortening the name and making legends easier to look at.</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>zuck <span class="ot">&lt;-</span> <span class="fu">bind_rows</span>(</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  pppt <span class="sc">|&gt;</span> <span class="fu">distinct</span>(<span class="at">id =</span> Female, Enclosure) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="st">"F"</span>),</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>  pppt <span class="sc">|&gt;</span> <span class="fu">distinct</span>(<span class="at">id =</span> Male, Enclosure) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">sex =</span> <span class="st">"M"</span>)</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(id, sex, <span class="at">enclosure =</span> Enclosure) <span class="co"># building a meta data table organizing the data needed for social interactions figure</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Sex/enclosure assignments:"</span>, <span class="fu">nrow</span>(zuck), <span class="st">"individuals</span><span class="sc">\n</span><span class="st">"</span>) <span class="co"># Printing the number of paired individuals</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Sex/enclosure assignments: 23 individuals</code></pre>
 </div>
@@ -406,62 +371,62 @@ The following object is masked from 'package:base':
 <p>For the RFID dataset, we define an interaction as the detection of two animals by the same antenna within a 5 minute (300 second) bin. With relationship defined, we can then generate a Simple Ratio Index (SRI) matrix.</p>
 <p>For the trapping data, the weight of a male and female vole’s “edge” is defined by the number of co-trappings.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># building a custom function that builds a social network. defining the function name and the three inputs: rfid_df = full RFID data frame, ids = which animal detections to include, window_s = Time-bin width in seconds, set at 5 minutes to scan which two animals were scanned at the same antenna within a 5 minute window. Counting this as associating or pairing.</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>rfid_build <span class="ot">&lt;-</span> <span class="cf">function</span>(rfid_df, ids, <span class="at">window_s =</span> <span class="dv">300</span>) {</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># subset of rfid data to only store tags in the ids list and then creating a bin converting the time stamp into a time-window number and then creating an event column to combine antenna and bin data. distinct(event, tag) collapses detections of the same individual into one row.</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  sub <span class="ot">&lt;-</span> rfid_df <span class="sc">|&gt;</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(tag <span class="sc">%in%</span> ids) <span class="sc">|&gt;</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">bin   =</span> <span class="fu">as.integer</span>(<span class="fu">as.numeric</span>(dt) <span class="sc">%/%</span> window_s),</span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">event =</span> <span class="fu">paste</span>(antenna, bin, <span class="at">sep =</span> <span class="st">"|"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(event, tag) </span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Number of animals in the network</span></span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(ids)</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If there are zero rows this creates an empty grpah with N nodes and not edges.</span></span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(sub) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">make_empty_graph</span>(<span class="at">n =</span> N, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>name <span class="ot">&lt;-</span> ids <span class="co"># name the nodes so the grpah is still labeled.</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(g)</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>   </span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  events <span class="ot">&lt;-</span> <span class="fu">unique</span>(sub<span class="sc">$</span>event) <span class="co"># pull out distinct event identifiers</span></span>
-<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>L, <span class="at">nrow =</span> <span class="fu">length</span>(events), <span class="at">ncol =</span> N,</span>
-<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">dimnames =</span> <span class="fu">list</span>(events, ids))</span>
-<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>  M[<span class="fu">cbind</span>(<span class="fu">match</span>(sub<span class="sc">$</span>event, events), <span class="fu">match</span>(sub<span class="sc">$</span>tag, ids))] <span class="ot">&lt;-</span> <span class="dv">1</span>L <span class="co"># allocating empty integer matrix and naming the rows (event id) and columns with the animal id. </span></span>
-<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a>  seen <span class="ot">&lt;-</span> <span class="fu">colSums</span>(M) <span class="co"># total number of events an animal appeared in</span></span>
-<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>  co <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(M) <span class="co"># matrix transpose times matrix to create a matrix where number of events at which both animals were detected.</span></span>
-<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(co) <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># set diagonals to 0 so no self loops are created</span></span>
-<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-29"><a href="#cb28-29" aria-hidden="true" tabindex="-1"></a>  denom <span class="ot">&lt;-</span> <span class="fu">outer</span>(seen, seen, <span class="st">"+"</span>) <span class="sc">-</span> co <span class="co"># creating denominator for SRI creating matrix which generates the number of events at which at least one pair was present</span></span>
-<span id="cb28-30"><a href="#cb28-30" aria-hidden="true" tabindex="-1"></a>  sri   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(denom <span class="sc">&gt;</span> <span class="dv">0</span>, co <span class="sc">/</span> denom, <span class="dv">0</span>) <span class="co"># guarding against division by 0</span></span>
-<span id="cb28-31"><a href="#cb28-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(sri) <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># again removing self loops</span></span>
-<span id="cb28-32"><a href="#cb28-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dimnames</span>(sri) <span class="ot">&lt;-</span> <span class="fu">list</span>(ids, ids) <span class="co"># reattaching row and column names.</span></span>
-<span id="cb28-33"><a href="#cb28-33" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-34"><a href="#cb28-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">graph_from_adjacency_matrix</span>(sri, <span class="at">mode =</span> <span class="st">"undirected"</span>,</span>
-<span id="cb28-35"><a href="#cb28-35" aria-hidden="true" tabindex="-1"></a>                              <span class="at">weighted =</span> <span class="cn">TRUE</span>, <span class="at">diag =</span> <span class="cn">FALSE</span>) <span class="co"># Building and returning igraph object from SRI matrix.</span></span>
-<span id="cb28-36"><a href="#cb28-36" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb28-37"><a href="#cb28-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-38"><a href="#cb28-38" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
-<span id="cb28-39"><a href="#cb28-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-40"><a href="#cb28-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Building a function that takes the trapping data and using it to create a social network. </span></span>
-<span id="cb28-41"><a href="#cb28-41" aria-hidden="true" tabindex="-1"></a>trap_build <span class="ot">&lt;-</span> <span class="cf">function</span>(pppt_df, ids) {</span>
-<span id="cb28-42"><a href="#cb28-42" aria-hidden="true" tabindex="-1"></a>  edge_df <span class="ot">&lt;-</span> pppt_df <span class="sc">|&gt;</span></span>
-<span id="cb28-43"><a href="#cb28-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Female <span class="sc">%in%</span> ids, Male <span class="sc">%in%</span> ids,</span>
-<span id="cb28-44"><a href="#cb28-44" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(Trapping), Trapping <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb28-45"><a href="#cb28-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transmute</span>(<span class="at">from =</span> Female, <span class="at">to =</span> Male, <span class="at">weight =</span> Trapping) <span class="co"># Start by building an edge list filtering rows where Female and Male are in the ids and Trapping is not NA and greater than 0. Then creating a new columns to be Female, Male, Trapping representing a weighted connection.</span></span>
-<span id="cb28-46"><a href="#cb28-46" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb28-47"><a href="#cb28-47" aria-hidden="true" tabindex="-1"></a>  vertex_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> ids) <span class="co">#Then creating a node list so all individual ids appear in the graph</span></span>
-<span id="cb28-48"><a href="#cb28-48" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-49"><a href="#cb28-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(edge_df) <span class="sc">==</span> <span class="dv">0</span>) {</span>
-<span id="cb28-50"><a href="#cb28-50" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">make_empty_graph</span>(<span class="at">n =</span> <span class="fu">length</span>(ids), <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb28-51"><a href="#cb28-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>name <span class="ot">&lt;-</span> ids</span>
-<span id="cb28-52"><a href="#cb28-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(g)</span>
-<span id="cb28-53"><a href="#cb28-53" aria-hidden="true" tabindex="-1"></a>  } <span class="co"># If no valid trapping is found creates and empty undirected graph</span></span>
-<span id="cb28-54"><a href="#cb28-54" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb28-55"><a href="#cb28-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">graph_from_data_frame</span>(edge_df, <span class="at">directed =</span> <span class="cn">FALSE</span>, <span class="at">vertices =</span> vertex_df)</span>
-<span id="cb28-56"><a href="#cb28-56" aria-hidden="true" tabindex="-1"></a>} <span class="co"># build weighted graph using igraph function.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># building a custom function that builds a social network. defining the function name and the three inputs: rfid_df = full RFID data frame, ids = which animal detections to include, window_s = Time-bin width in seconds, set at 5 minutes to scan which two animals were scanned at the same antenna within a 5 minute window. Counting this as associating or pairing.</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>rfid_build <span class="ot">&lt;-</span> <span class="cf">function</span>(rfid_df, ids, <span class="at">window_s =</span> <span class="dv">300</span>) {</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># subset of rfid data to only store tags in the ids list and then creating a bin converting the time stamp into a time-window number and then creating an event column to combine antenna and bin data. distinct(event, tag) collapses detections of the same individual into one row.</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  sub <span class="ot">&lt;-</span> rfid_df <span class="sc">|&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(tag <span class="sc">%in%</span> ids) <span class="sc">|&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">bin   =</span> <span class="fu">as.integer</span>(<span class="fu">as.numeric</span>(dt) <span class="sc">%/%</span> window_s),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">event =</span> <span class="fu">paste</span>(antenna, bin, <span class="at">sep =</span> <span class="st">"|"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">distinct</span>(event, tag) </span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Number of animals in the network</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>  N <span class="ot">&lt;-</span> <span class="fu">length</span>(ids)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If there are zero rows this creates an empty grpah with N nodes and not edges.</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(sub) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">make_empty_graph</span>(<span class="at">n =</span> N, <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>name <span class="ot">&lt;-</span> ids <span class="co"># name the nodes so the grpah is still labeled.</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(g)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>   </span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  events <span class="ot">&lt;-</span> <span class="fu">unique</span>(sub<span class="sc">$</span>event) <span class="co"># pull out distinct event identifiers</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  M <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>L, <span class="at">nrow =</span> <span class="fu">length</span>(events), <span class="at">ncol =</span> N,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>              <span class="at">dimnames =</span> <span class="fu">list</span>(events, ids))</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>  M[<span class="fu">cbind</span>(<span class="fu">match</span>(sub<span class="sc">$</span>event, events), <span class="fu">match</span>(sub<span class="sc">$</span>tag, ids))] <span class="ot">&lt;-</span> <span class="dv">1</span>L <span class="co"># allocating empty integer matrix and naming the rows (event id) and columns with the animal id. </span></span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>  seen <span class="ot">&lt;-</span> <span class="fu">colSums</span>(M) <span class="co"># total number of events an animal appeared in</span></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>  co <span class="ot">&lt;-</span> <span class="fu">crossprod</span>(M) <span class="co"># matrix transpose times matrix to create a matrix where number of events at which both animals were detected.</span></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(co) <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># set diagonals to 0 so no self loops are created</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>  denom <span class="ot">&lt;-</span> <span class="fu">outer</span>(seen, seen, <span class="st">"+"</span>) <span class="sc">-</span> co <span class="co"># creating denominator for SRI creating matrix which generates the number of events at which at least one pair was present</span></span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>  sri   <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(denom <span class="sc">&gt;</span> <span class="dv">0</span>, co <span class="sc">/</span> denom, <span class="dv">0</span>) <span class="co"># guarding against division by 0</span></span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(sri) <span class="ot">&lt;-</span> <span class="dv">0</span> <span class="co"># again removing self loops</span></span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dimnames</span>(sri) <span class="ot">&lt;-</span> <span class="fu">list</span>(ids, ids) <span class="co"># reattaching row and column names.</span></span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">graph_from_adjacency_matrix</span>(sri, <span class="at">mode =</span> <span class="st">"undirected"</span>,</span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a>                              <span class="at">weighted =</span> <span class="cn">TRUE</span>, <span class="at">diag =</span> <span class="cn">FALSE</span>) <span class="co"># Building and returning igraph object from SRI matrix.</span></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a><span class="do">###</span></span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Building a function that takes the trapping data and using it to create a social network. </span></span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>trap_build <span class="ot">&lt;-</span> <span class="cf">function</span>(pppt_df, ids) {</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a>  edge_df <span class="ot">&lt;-</span> pppt_df <span class="sc">|&gt;</span></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Female <span class="sc">%in%</span> ids, Male <span class="sc">%in%</span> ids,</span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>           <span class="sc">!</span><span class="fu">is.na</span>(Trapping), Trapping <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>    <span class="fu">transmute</span>(<span class="at">from =</span> Female, <span class="at">to =</span> Male, <span class="at">weight =</span> Trapping) <span class="co"># Start by building an edge list filtering rows where Female and Male are in the ids and Trapping is not NA and greater than 0. Then creating a new columns to be Female, Male, Trapping representing a weighted connection.</span></span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a>  vertex_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> ids) <span class="co">#Then creating a node list so all individual ids appear in the graph</span></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">nrow</span>(edge_df) <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a>    g <span class="ot">&lt;-</span> <span class="fu">make_empty_graph</span>(<span class="at">n =</span> <span class="fu">length</span>(ids), <span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">V</span>(g)<span class="sc">$</span>name <span class="ot">&lt;-</span> ids</span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(g)</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>  } <span class="co"># If no valid trapping is found creates and empty undirected graph</span></span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">graph_from_data_frame</span>(edge_df, <span class="at">directed =</span> <span class="cn">FALSE</span>, <span class="at">vertices =</span> vertex_df)</span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>} <span class="co"># build weighted graph using igraph function.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="step-7.-comparing-the-interaction-networks" class="level2">
@@ -469,57 +434,62 @@ The following object is masked from 'package:base':
 <p>Lastly, we generate networks for both detection methods and plot them side-by-side to see differences in perceived sociality.</p>
 <p>Nodes are colored by sex (Red = Female, Blue = Male).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot_panel <span class="ot">&lt;-</span> <span class="cf">function</span>(g, sex_vec, title) {</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">V</span>(g)<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(sex_vec[<span class="fu">V</span>(g)<span class="sc">$</span>name] <span class="sc">==</span> <span class="st">"F"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(g,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">layout       =</span> <span class="fu">layout_in_circle</span>(g),</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">vertex.size  =</span> <span class="dv">12</span>,</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">vertex.label =</span> <span class="cn">NA</span>,</span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">vertex.frame.color =</span> <span class="st">"black"</span>,</span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">edge.color   =</span> <span class="st">"black"</span>,</span>
-<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">edge.width   =</span> <span class="fl">0.7</span>,</span>
-<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">main         =</span> title)</span>
-<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>} <span class="co"># Function to create plot taking g (build by trap_build) and sex_vec (named vector mapping ids to sex)</span></span>
-<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>sex_vec <span class="ot">&lt;-</span> <span class="fu">setNames</span>(zuck<span class="sc">$</span>sex, zuck<span class="sc">$</span>id) <span class="co"># create a named vector from the meta data table created earlier</span></span>
-<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"rfid_vs_trapping_networks.png"</span>, <span class="at">width =</span> <span class="dv">2400</span>, <span class="at">height =</span> <span class="dv">2200</span>, <span class="at">res =</span> <span class="dv">220</span>)</span>
-<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span>
-<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>row_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"LD"</span>, <span class="st">"HD"</span>) <span class="co"># setting order of the plots</span></span>
-<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>enc_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">LD =</span> <span class="st">"Enclosure 1 (HD)"</span>, <span class="at">HD =</span> <span class="st">"Enclosure 2 (LD)"</span>) <span class="co"># Plot labels</span></span>
-<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a>panel_letters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="fu">c</span>(<span class="st">"C"</span>,<span class="st">"D"</span>))</span>
-<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a loop over row_order</span></span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (row_idx <span class="cf">in</span> <span class="fu">seq_along</span>(row_order)) {</span>
-<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>  enc_id <span class="ot">&lt;-</span> row_order[row_idx] <span class="co"># generates enclosure ID from row_order </span></span>
-<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>  ids_e  <span class="ot">&lt;-</span> zuck <span class="sc">|&gt;</span> <span class="fu">filter</span>(enclosure <span class="sc">==</span> enc_id) <span class="sc">|&gt;</span> <span class="fu">pull</span>(id) <span class="sc">|&gt;</span> <span class="fu">sort</span>() <span class="co"># Building sorted vector of individual IDS belonging to the enclosure.</span></span>
-<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>  g_rfid <span class="ot">&lt;-</span> <span class="fu">rfid_build</span>(rfid, ids_e, <span class="at">window_s =</span> <span class="dv">300</span>) <span class="co"># Builds RFID_based network graph for the enclosrue individuals using a 300 second (5 minute) time window to define association</span></span>
-<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>  g_trap <span class="ot">&lt;-</span> <span class="fu">trap_build</span>(pppt <span class="sc">|&gt;</span> <span class="fu">filter</span>(Enclosure <span class="sc">==</span> enc_id), ids_e) <span class="co"># Building a trapping based network for the same individuals.</span></span>
-<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>  enc_label <span class="ot">&lt;-</span> enc_labels[[enc_id]] <span class="co"># renaming enclosure</span></span>
-<span id="cb29-34"><a href="#cb29-34" aria-hidden="true" tabindex="-1"></a>  letters_row <span class="ot">&lt;-</span> panel_letters[[row_idx]] <span class="co"># lettering each panel</span></span>
-<span id="cb29-35"><a href="#cb29-35" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb29-36"><a href="#cb29-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_panel</span>(g_rfid, sex_vec,</span>
-<span id="cb29-37"><a href="#cb29-37" aria-hidden="true" tabindex="-1"></a>             <span class="fu">paste0</span>(letters_row[<span class="dv">1</span>], <span class="st">"  RFID Data — "</span>, enc_label)) <span class="co"># Plotting RFID network as first panel</span></span>
-<span id="cb29-38"><a href="#cb29-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_panel</span>(g_trap, sex_vec,</span>
-<span id="cb29-39"><a href="#cb29-39" aria-hidden="true" tabindex="-1"></a>             <span class="fu">paste0</span>(letters_row[<span class="dv">2</span>], <span class="st">"  Trapping Data — "</span>, enc_label)) <span class="co"># Plots trapping networks as second panel.</span></span>
-<span id="cb29-40"><a href="#cb29-40" aria-hidden="true" tabindex="-1"></a>} </span>
-<span id="cb29-41"><a href="#cb29-41" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb29-42"><a href="#cb29-42" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() <span class="co"># saves graphic device.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot_panel <span class="ot">&lt;-</span> <span class="cf">function</span>(g, sex_vec, title) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">V</span>(g)<span class="sc">$</span>color <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(sex_vec[<span class="fu">V</span>(g)<span class="sc">$</span>name] <span class="sc">==</span> <span class="st">"F"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(g,</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">layout       =</span> <span class="fu">layout_in_circle</span>(g),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">vertex.size  =</span> <span class="dv">12</span>,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">vertex.label =</span> <span class="cn">NA</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">vertex.frame.color =</span> <span class="st">"black"</span>,</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">edge.color   =</span> <span class="st">"black"</span>,</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">edge.width   =</span> <span class="fl">0.7</span>,</span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">main         =</span> title)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>} <span class="co"># Function to create plot taking g (build by trap_build) and sex_vec (named vector mapping ids to sex)</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>sex_vec <span class="ot">&lt;-</span> <span class="fu">setNames</span>(zuck<span class="sc">$</span>sex, zuck<span class="sc">$</span>id) <span class="co"># create a named vector from the meta data table created earlier</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">png</span>(<span class="st">"rfid_vs_trapping_networks.png"</span>, <span class="at">width =</span> <span class="dv">2400</span>, <span class="at">height =</span> <span class="dv">2200</span>, <span class="at">res =</span> <span class="dv">220</span>)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span>))</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>row_order <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"LD"</span>, <span class="st">"HD"</span>) <span class="co"># setting order of the plots</span></span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>enc_labels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="at">LD =</span> <span class="st">"Enclosure 1 (HD)"</span>, <span class="at">HD =</span> <span class="st">"Enclosure 2 (LD)"</span>) <span class="co"># Plot labels</span></span>
+<span id="cb17-22"><a href="#cb17-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-23"><a href="#cb17-23" aria-hidden="true" tabindex="-1"></a>panel_letters <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">"A"</span>,<span class="st">"B"</span>), <span class="fu">c</span>(<span class="st">"C"</span>,<span class="st">"D"</span>))</span>
+<span id="cb17-24"><a href="#cb17-24" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-25"><a href="#cb17-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a loop over row_order</span></span>
+<span id="cb17-26"><a href="#cb17-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (row_idx <span class="cf">in</span> <span class="fu">seq_along</span>(row_order)) {</span>
+<span id="cb17-27"><a href="#cb17-27" aria-hidden="true" tabindex="-1"></a>  enc_id <span class="ot">&lt;-</span> row_order[row_idx] <span class="co"># generates enclosure ID from row_order </span></span>
+<span id="cb17-28"><a href="#cb17-28" aria-hidden="true" tabindex="-1"></a>  ids_e  <span class="ot">&lt;-</span> zuck <span class="sc">|&gt;</span> <span class="fu">filter</span>(enclosure <span class="sc">==</span> enc_id) <span class="sc">|&gt;</span> <span class="fu">pull</span>(id) <span class="sc">|&gt;</span> <span class="fu">sort</span>() <span class="co"># Building sorted vector of individual IDS belonging to the enclosure.</span></span>
+<span id="cb17-29"><a href="#cb17-29" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-30"><a href="#cb17-30" aria-hidden="true" tabindex="-1"></a>  g_rfid <span class="ot">&lt;-</span> <span class="fu">rfid_build</span>(rfid, ids_e, <span class="at">window_s =</span> <span class="dv">300</span>) <span class="co"># Builds RFID_based network graph for the enclosrue individuals using a 300 second (5 minute) time window to define association</span></span>
+<span id="cb17-31"><a href="#cb17-31" aria-hidden="true" tabindex="-1"></a>  g_trap <span class="ot">&lt;-</span> <span class="fu">trap_build</span>(pppt <span class="sc">|&gt;</span> <span class="fu">filter</span>(Enclosure <span class="sc">==</span> enc_id), ids_e) <span class="co"># Building a trapping based network for the same individuals.</span></span>
+<span id="cb17-32"><a href="#cb17-32" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-33"><a href="#cb17-33" aria-hidden="true" tabindex="-1"></a>  enc_label <span class="ot">&lt;-</span> enc_labels[[enc_id]] <span class="co"># renaming enclosure</span></span>
+<span id="cb17-34"><a href="#cb17-34" aria-hidden="true" tabindex="-1"></a>  letters_row <span class="ot">&lt;-</span> panel_letters[[row_idx]] <span class="co"># lettering each panel</span></span>
+<span id="cb17-35"><a href="#cb17-35" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb17-36"><a href="#cb17-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_panel</span>(g_rfid, sex_vec,</span>
+<span id="cb17-37"><a href="#cb17-37" aria-hidden="true" tabindex="-1"></a>             <span class="fu">paste0</span>(letters_row[<span class="dv">1</span>], <span class="st">"  RFID Data — "</span>, enc_label)) <span class="co"># Plotting RFID network as first panel</span></span>
+<span id="cb17-38"><a href="#cb17-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot_panel</span>(g_trap, sex_vec,</span>
+<span id="cb17-39"><a href="#cb17-39" aria-hidden="true" tabindex="-1"></a>             <span class="fu">paste0</span>(letters_row[<span class="dv">2</span>], <span class="st">"  Trapping Data — "</span>, enc_label)) <span class="co"># Plots trapping networks as second panel.</span></span>
+<span id="cb17-40"><a href="#cb17-40" aria-hidden="true" tabindex="-1"></a>} </span>
+<span id="cb17-41"><a href="#cb17-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb17-42"><a href="#cb17-42" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>() <span class="co"># saves graphic device.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>png 
-  2 </code></pre>
+<pre><code>quartz_off_screen 
+                2 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Saved rfid_vs_trapping_networks.png</span><span class="sc">\n</span><span class="st">"</span>) <span class="co"># Lets you know the image saved.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Saved rfid_vs_trapping_networks.png</span><span class="sc">\n</span><span class="st">"</span>) <span class="co"># Lets you know the image saved.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Saved rfid_vs_trapping_networks.png</code></pre>
 </div>
 </div>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Package summary: Our package combines RFID and live trapping data to generate a granular analysis of vole social networks. <code>Function 1</code> Generates social work matrices from RFID data of both high density and low density plots. <code>Function 2</code> Similarly generates social network matrices but from live trap/PPT data for HD and LD conditions. <code>Function 3</code> Combines these two functions to create a social interaction plot of individual male and female voles.</p>
+<p>Data summary &amp; research value:The combined spatial overlaps and temporal networks show a more complex and dimensional picture of prairie vole social interaction than either RFID tracking or live trapping alone. When combining these tools, we are able to see web of interactions and clustered community metrics largely overlooked by the single moment “snapshot” of commonly used live trapping. This package can go beyond the vole realm and be used to generate social networks for eusocial species such as naked mole rats, or species with long-term friendships, such as the common vampire bat.</p>
 </section>
 </section>
 
@@ -576,13 +546,14 @@ The following object is masked from 'package:base':
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
